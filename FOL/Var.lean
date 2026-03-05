@@ -12,29 +12,42 @@ set_option linter.flexible false
 
 namespace FOL
 
-/-
-Variables
-===
+/-!
+# Variables
+
+In first order logic we assume a countably infinite supply of variables `x₀`, `x₁`, `x₂`, ...,
+which we identify with the natural numbers via an `abbrev` for clarity,
+as there are several other objects that are identified with `ℕ` as well,
+such as `Arity` and `Level`.
 -/
 
-abbrev Arity := ℕ
+/-- Variables in FOL are natural numbers. -/
 abbrev Var := ℕ
+
+/-- A `Level` is be used to denote the number of
+quantifiers containing a raw occurance of the variable. -/
 abbrev Level := ℕ
 
-def Var.shift (level : Level) (v : Var) : Var :=
-  if v < level then v else v + 1
+/-- Shifting a variable at a given level `L` is used when
+quantifying with `L` quantifiers, so that variables above that
+level need to be shifted, as required by Debruijn indexing. -/
+def Var.shift (L : Level) (v : Var) : Var :=
+  if v < L then v else v + 1
 
+/-- The opposite of shifting. -/
 def Var.unshift (level : Level) (v : Var) : Var :=
   if v < level then v else v - 1
 
+/-- Substitite `x` for `s` in the term `v`. -/
 def Var.subst (s x : Var) (v : Var) : Var :=
   if v = x then s else v
 
 notation:max t "[" x " ↦ " s "]" => Var.subst s x t
 
-def Var.inst_at (t : Var) (level : Level) (v : Var) : Var :=
-  if v < level then v
-  else if v = level then t
+/-- Instantiate a variable assuming `L` quantifiers are being eliminated. -/
+def Var.inst_at (t : Var) (L : Level) (v : Var) : Var :=
+  if v < L then v
+  else if v = L then t
   else v - 1
 
 section

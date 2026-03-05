@@ -18,6 +18,9 @@ Tuples
 ===
 -/
 
+/-- The arity of a predicate is the number of arguments it takes. -/
+abbrev Arity := ℕ
+
 abbrev Tuple (k : Arity) := Fin k → Var
 
 def Tuple.shift {k} (level : Level) (tuple : Tuple k) : Tuple k :=
