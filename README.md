@@ -15,7 +15,7 @@ In this project we embed First Order Logic into Lean by defining:
 
 - A *partial* proof of **completness**: `Γ ⊢ φ → Γ ⊨ φ`
 
-Functions are not defined directly, but are simulated using predicates.
+Functions are not defined directly, but are simulated using predicates. See the examples.
 
 Details of the Embedding
 ===
@@ -32,7 +32,9 @@ and renaming of variable indices crucial for the proof of soundness.
 **Signatures** contain predicate declarations with specific arities.
 For example, a Graph theory signature with equality is denoted:
 ```lean
-inductive Graph : Signature | E : Graph 2 | eq: Graph 2
+inductive Graph : Signature 
+  | E : Graph 2 
+  | eq: Graph 2
 ```
 
 **Models** are represented as structures with interpretations as in:
@@ -43,9 +45,7 @@ def Cycle (n : ℕ): Model Graph (Fin n) := ⟨
     | eq => f 0 = f 1
 ⟩
 ```
--/
 
-/-
 Related Work
 ===
 
@@ -57,9 +57,18 @@ in terms of the lambda calculus. It is explained in Arthur Charguéraud's *The L
 
 ▸ First order logic is already defined in Mathlib based on the
 [Flypitch project](https://flypitch.github.io/), which is a formalization
-of the proof of the independence of the continuum hypothesis.
+of the proof of the independence of the continuum hypothesis. This project was
+developed separately, for purposes of self-edification.
 
 ▸ For connections to category theory: *First Order Categorical Logic
 Model-Theoretical Methods in the Theory of Topoi and Related Categories*, by
 Michael Makkai and Gonzalo E. Reyes.
 
+Notes
+===
+
+To build the documentation do:
+```bash
+lake -R -Kenv=CI update
+lake build MyProject:docs
+```

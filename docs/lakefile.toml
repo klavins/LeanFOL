@@ -1,0 +1,23 @@
+name = "FOL Documentation"
+version = "0.1.0"
+keywords = ["logic"]
+defaultTargets = ["FOL"]
+
+[package]
+name = "FOLDocs"
+version = "0.1.0"
+
+[[require]]
+name = "FOL"
+path = ".." 
+
+[[require]]
+name = "«doc-gen4»"
+scope = "leanprover"
+rev = "main"
+
+[[lean_lib]]
+name = "FOL"
+
+[package.docSpec]
+build = ["FOL"]
