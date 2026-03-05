@@ -7,6 +7,9 @@
 
 import Mathlib
 
+set_option linter.style.setOption false
+set_option linter.flexible false
+
 namespace FOL
 
 /-
@@ -41,9 +44,9 @@ namespace Var
 variable {level : Level} {t v s s' x y : Var}
 
 @[simp]
-theorem unshift_shift  : unshift level ∘ shift level = id := by
+theorem unshift_shift : unshift level ∘ shift level = id := by
   funext v
-  simp[shift,unshift]
+  simp[shift, unshift]
   split_ifs with h1 h2
   · rfl
   · have h3 : level < level := by
@@ -61,12 +64,14 @@ theorem subst_eq : x[x↦s] = s := by
 theorem subst_ne (h : t ≠ x) : t[x↦s] = t := by
   simp[subst, h]
 
-@[simp] theorem subst_subst (h₁ : x ≠ y) (h₂ : t ≠ x): v[x↦s][y↦t] = v[y↦t][x↦s[y↦t]] := by
+@[simp] theorem subst_subst (h₁ : x ≠ y) (h₂ : t ≠ x)
+  : v[x↦s][y↦t] = v[y↦t][x↦s[y↦t]] := by
   simp[subst]
   aesop
 
 @[simp]
-theorem subst_succ_ne_succ (h : t ≠ x) : (t + 1)[x+1 ↦ s+1] = t[x↦s]+1 := by
+theorem subst_succ_ne_succ (h : t ≠ x)
+  : (t + 1)[x+1 ↦ s+1] = t[x↦s]+1 := by
   simp[subst, h]
 
 @[simp]
