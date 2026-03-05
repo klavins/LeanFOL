@@ -64,11 +64,3 @@ developed separately, for purposes of self-edification.
 Model-Theoretical Methods in the Theory of Topoi and Related Categories*, by
 Michael Makkai and Gonzalo E. Reyes.
 
-Notes
-===
-
-To build the documentation do:
-```bash
-lake -R -Kenv=CI update
-lake build MyProject:docs
-```
