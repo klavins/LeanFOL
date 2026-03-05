@@ -13,7 +13,7 @@ In this project we embed First Order Logic into Lean by defining:
 
 - A proof of **soundness**: `Γ ⊢ φ → Γ ⊨ φ`
 
-- A *partial* proof of **completness**: `Γ ⊢ φ → Γ ⊨ φ`
+- A *partial* proof of **completness**: `Γ ⊨ φ → Γ ⊢ φ`
 
 Functions are not defined directly, but are simulated using predicates. See the examples.
 
