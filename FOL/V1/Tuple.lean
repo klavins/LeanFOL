@@ -6,7 +6,7 @@
 --  (at your option) any later version.
 
 import Mathlib
-import FOL.Var
+import FOL.V1.Var
 
 namespace FOL
 

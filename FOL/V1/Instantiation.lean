@@ -6,10 +6,10 @@
 --  (at your option) any later version.
 
 import Mathlib
-import FOL.Var
-import FOL.Tuple
-import FOL.Formula
-import FOL.Rename
+import FOL.V1.Var
+import FOL.V1.Tuple
+import FOL.V1.Formula
+import FOL.V1.Rename
 
 namespace FOL
 

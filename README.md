@@ -46,6 +46,13 @@ def Cycle (n : ℕ): Model Graph (Fin n) := ⟨
 ⟩
 ```
 
+Code Structure
+===
+
+There are two version of this project in this repo. 
+- FOL/V2: Definitions and only what is needed to prove soundess.
+- FOL/V1: Everything in V2 plus a great number of @[simps] and theorems about substitution, renaming, etc.
+
 Related Work
 ===
 

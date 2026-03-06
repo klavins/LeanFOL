@@ -1,7 +1,12 @@
-import FOL.Var
-import FOL.Tuple
-import FOL.Formula
-import FOL.Rename
-import FOL.Instantiation
-import FOL.Provable
-import FOL.Entailment
+
+/- Version 1 -/
+import FOL.V1.Var
+import FOL.V1.Tuple
+import FOL.V1.Formula
+import FOL.V1.Rename
+import FOL.V1.Instantiation
+import FOL.V1.Provable
+import FOL.V1.Entailment
+
+/- Version 2 -/
+import FOL.V2.Defs
