@@ -9,9 +9,8 @@ import Mathlib
 
 namespace FOL2
 
-/-
-Definitions
-===
+/-!
+# FOL Definitions
 -/
 
 universe u

@@ -1,4 +1,3 @@
-
 /- Version 1 -/
 import FOL.V1.Var
 import FOL.V1.Tuple
@@ -10,3 +9,4 @@ import FOL.V1.Entailment
 
 /- Version 2 -/
 import FOL.V2.Defs
+import FOL.V2.Subst

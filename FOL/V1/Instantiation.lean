@@ -16,9 +16,10 @@ namespace FOL
 set_option linter.style.setOption false
 set_option linter.flexible false
 
-/-
-Inst at for Formulas
-===
+
+/-!
+# Inst at for Formulas
+
 -/
 
 def Formula.inst_at {S : Signature} (t : Var) (level : Level) : Formula S → Formula S
@@ -52,10 +53,10 @@ theorem inst_at_subst (h₁ : level ≤ x) (h₂ : level ≤ s)
   : (φ.inst_at t level)[x↦s] = φ[x+1↦s+1].inst_at t[x↦s] level := by
   induction φ generalizing t s level x with
   | bot => rfl
-  | rel t τ => simp[*]
-  | imp f g ihf ihg => simp[*]
+  | rel t τ => simp only [inst_at_rel, subst_rel, Tuple.inst_at_subst, h₂, h₁]
+  | imp f g ihf ihg => simp only [inst_at_imp, subst_imp, h₁, h₂, ihf, ihg]
   | all f ih =>
-      simp [ih (Nat.succ_le_succ h₁) (Nat.succ_le_succ h₂)]
+      simp[ih (Nat.succ_le_succ h₁) (Nat.succ_le_succ h₂)]
 
 theorem inst_subst {S : Signature} (φ : Formula S) (s x t : Var)
   : (φ.inst t)[x↦s] = φ[x+1↦s+1].inst t[x↦s]  := by
@@ -65,7 +66,7 @@ theorem inst_subst {S : Signature} (φ : Formula S) (s x t : Var)
   : φ[x↦s][y↦t] = φ[y↦t][x↦s[y↦t]] := by
   induction φ generalizing t s x y with
   | bot => rfl
-  | rel r τ => simp[subst, *]
+  | rel r τ => simp?[subst, *]
   | imp f g ihf ihg => simp[subst, *]
   | all f ih =>
     have := @ih (s+1) (x+1) (y+1) (t+1)
